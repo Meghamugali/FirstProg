@@ -6,24 +6,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.ContextMenu
+import android.view.*
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnFocusChangeListener {
     lateinit var etName : EditText //declaration
     lateinit var tvMain: TextView
+    lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //inflated -layoutinflater
         etName = findViewById(R.id.editTextTextPersonName)
         tvMain = findViewById(R.id.tvMain)
+        loginButton = findViewById(R.id.btnLogin)
+
+        registerForContextMenu(loginButton)
         Log.i(TAG,"im in oncreate")
+
+        etName.setOnFocusChangeListener(this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
@@ -40,6 +46,25 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.mi_logout -> {
                 Toast.makeText(this, "logging out", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return true
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menuInflater.inflate(R.menu.main_context,menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        super.onContextItemSelected(item)
+        when(item.itemId){
+            R.id.mi_edit -> {
+                Toast.makeText(this," editing",Toast.LENGTH_SHORT).show()
+            }
+            R.id.mi_delete -> {
+                Toast.makeText(this,"deleting",Toast.LENGTH_SHORT).show()
+
             }
         }
         return true
@@ -108,6 +133,15 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, dIntent)
         var contactData = dIntent?.extras?.getString("con")
         tvMain.text = contactData
+    }
+
+    override fun onFocusChange(p0: View?, isFocussed: Boolean) {
+        if(isFocussed){
+            Toast.makeText(this,"focussed",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this,"lost focus",Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
