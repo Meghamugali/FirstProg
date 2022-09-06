@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -23,30 +25,26 @@ class MainActivity : AppCompatActivity() {
         tvMain = findViewById(R.id.tvMain)
         Log.i(TAG,"im in oncreate")
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG, "onStart: starting ui-visibe")
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        // var menuInflater: MenuInflater = getMenuInflater()
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return true
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG, "onResume: Resuming-restore state")
-    }
-    override fun onPause() {
-        super.onPause()
-        Log.i(TAG, "onPause: Pausing- save state")
+    override fun onOptionsItemSelected(mItem: MenuItem): Boolean {
+        super.onOptionsItemSelected(mItem)
+        when (mItem.itemId) {
+            R.id.mi_settings -> {
+                Toast.makeText(this, "opening settings", Toast.LENGTH_SHORT).show()
+            }
+            R.id.mi_logout -> {
+                Toast.makeText(this, "logging out", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return true
     }
 
-    override fun onStop() {
-        super.onStop()
-        Log.i(TAG, "onStop: stopping")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(TAG, "onDestroy: destroying")
-    }
     fun clickHandler(viewClicked: View) {
         // var name: String = etName.text.toString()
         Log.e(TAG,"click handler")
