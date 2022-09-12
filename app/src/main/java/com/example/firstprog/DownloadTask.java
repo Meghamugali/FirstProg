@@ -19,6 +19,7 @@ public class DownloadTask extends AsyncTask<String,Integer, Bitmap> {
     protected void onPreExecute() {
         super.onPreExecute();
         mProgressBar.setVisibility(View.VISIBLE);
+        Log.i(TAG, "onPostExecute: starting Download");
     }
 
     @Override
