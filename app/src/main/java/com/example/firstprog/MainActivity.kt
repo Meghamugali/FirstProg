@@ -8,6 +8,7 @@ import android.provider.AlarmClock
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 
@@ -15,38 +16,18 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
     lateinit var etName : EditText //declaration
     lateinit var tvMain: TextView
+    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //inflated -layoutinflater
         etName = findViewById(R.id.editTextTextPersonName)
         tvMain = findViewById(R.id.tvMain)
+        progressBar = findViewById(R.id.progressBar)
         Log.i(TAG,"im in oncreate")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(TAG, "onStart: starting ui-visibe")
-    }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG, "onResume: Resuming-restore state")
-    }
-    override fun onPause() {
-        super.onPause()
-        Log.i(TAG, "onPause: Pausing- save state")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i(TAG, "onStop: stopping")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(TAG, "onDestroy: destroying")
-    }
     fun clickHandler(viewClicked: View) {
         // var name: String = etName.text.toString()
         Log.e(TAG,"click handler")
@@ -54,8 +35,21 @@ class MainActivity : AppCompatActivity() {
             R.id.btnLogin -> {startHomeActivity()}
             R.id.btnDial ->{startDialer()}
             R.id.btnAlarm -> {createAlarm("sync",12,56)}
+            R.id.btnMTest -> {getSetData()}
+            R.id.btndownload -> {downloadImage()}
         }
 
+    }
+
+    private fun downloadImage() {
+        var downloadTask = DownloadTask(progressBar)
+        downloadTask.execute("http://imagedownloadurl.com")
+    }
+
+
+    private fun getSetData() {
+            var name = etName.text.toString()
+            tvMain.setText(name)
     }
 
     private fun startDialer() {

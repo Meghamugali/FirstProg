@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FirstProg</string>
+    <string name="Enter_name">Enter your name</string>
+    <string name="Enter_Password">Enter your Password</string>
 </resources>

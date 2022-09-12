@@ -23,20 +23,20 @@ public class LangsAdapter extends RecyclerView.Adapter<LangsAdapter.LViewHolder>
     @NonNull
     @Override
     public LangsAdapter.LViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.i(TAG,"nikhil has bought a plank from market");
+        Log.i(TAG,"Nikhil has bought a plank from market");
         View plankBought = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_rview,parent,false);
         return new LViewHolder(plankBought);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LangsAdapter.LViewHolder holder, int position) {
-        Log.i(TAG,"rumaan writing the dish name on the plank"+mLanguages[position]);
+        Log.i(TAG,"Rumaan writing the dish name on the plank"+mLanguages[position]);
         holder.rowTextView.setText(mLanguages[position]);
     }
 
     @Override
     public int getItemCount() {
-        Log.i(TAG,"megha counting the no of items in the data set");
+        Log.i(TAG,"Megha counting the no of items in the data set");
         return mLanguages.length;
     }
 
@@ -44,7 +44,7 @@ public class LangsAdapter extends RecyclerView.Adapter<LangsAdapter.LViewHolder>
             TextView rowTextView;
         public LViewHolder(@NonNull View plankBought) {
                 super(plankBought);
-                Log.i(TAG,"abdul is storing the plan");
+                Log.i(TAG,"Abdul is storing the plan");
                 rowTextView = plankBought.findViewById(R.id.tvRow);
 
 

@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/drawable/ic_baseline_school_24.xml" value="0.157" />
+        <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout-land/activity_main.xml" value="0.16181657848324515" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout/activity_recycler.xml" value="0.1796875" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout/row_rview.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/layout/styles.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/menu/main_context.xml" value="0.1" />
         <entry key="..\:/Users/mmug0001/AndroidStudioProjects/FirstProg/app/src/main/res/menu/main_menu.xml" value="0.14666666666666667" />
       </map>
