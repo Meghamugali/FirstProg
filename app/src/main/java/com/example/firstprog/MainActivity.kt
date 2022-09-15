@@ -15,12 +15,14 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
     lateinit var etName : EditText //declaration
     lateinit var tvMain: TextView
+    lateinit var etpassword: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //inflated -layoutinflater
         etName = findViewById(R.id.editTextTextPersonName)
         tvMain = findViewById(R.id.tvMain)
+        etpassword = findViewById(R.id.editTextTextPassword2)
         Log.i(TAG,"im in oncreate")
     }
 
@@ -32,10 +34,40 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i(TAG, "onResume: Resuming-restore state")
+        restoreData();
     }
+
+    private fun restoreData() {
+        //get the file and open it
+        var sharedprefs = getSharedPreferences("preferencesync", MODE_PRIVATE)
+        //read from the file
+       var name = sharedprefs.getString("namekey"," ")
+        var password = sharedprefs.getString("passwordkey"," ")
+        //restore the data into edittexts
+        etName.setText(name)
+        etpassword.setText(password)
+
+    }
+
     override fun onPause() {
         super.onPause()
         Log.i(TAG, "onPause: Pausing- save state")
+        saveData();
+    }
+
+    private fun saveData() {
+        //get the data from the edittexts
+       var name = etName.text.toString()
+        var password = etpassword.text.toString()
+        //create a file
+        var sharedprefs = getSharedPreferences("preferencesync", MODE_PRIVATE)
+        //open the file in edit mode
+       var editor = sharedprefs.edit()
+        //write to the file
+        editor.putString("namekey",name)
+        editor.putString("passwordkey",password)
+        //save the file
+     editor.apply()
     }
 
     override fun onStop() {
